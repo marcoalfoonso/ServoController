@@ -1,0 +1,30 @@
+body{
+    font-family: Arial, Helvetica, sans-serif
+}
+
+h1{
+    color: #010101;
+}
+
+.nota{
+    background-color: #fff0f3;
+    border-left: 4px solid #e00034;
+    padding: 8px 12px;
+}
+
+.slider-container {
+  width: 300px;
+  font-family: Arial, sans-serif;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #4CAF50;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid white;
+  box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}

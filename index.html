@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+
+        <meta charset='utf-8'>
+        <title>robotic</title>
+        <link rel="stylesheet" href="external.css">
+        <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+        <script src="servoCont1.js"></script>
+
+    </head>
+
+    <body>
+        <h1>Robot controller with sliders.</h1>
+
+        <p>Move the sliders to control the servomotors.</p>
+
+        <div class="slider-container">
+            <label for="q1">q1(°)</label>
+            <input type="range" id="q1" name="q1" min="0" max="180" value="90">
+        </div>
+        
+    </body>
+
+
+</html>
