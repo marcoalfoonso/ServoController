@@ -21,20 +21,32 @@ document.addEventListener("DOMContentLoaded",()=>{
 
     const canvas = document.getElementById("myCanvas");
     const ctx = canvas.getContext("2d");
-    let x = 0;
-    let y = 0;
+    
+    const l1 = 150;
+
+    let theta1 = (q1.value*Math.PI)/180;
+
 
     function animate() {
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        const originX = canvas.width/2;
+        const originY = canvas.height/2;
+
+        //Cinemática directa
+
+        const x1 = l1*Math.cos(theta1);
+        const y1 = l1*Math.sin(theta1);
+
+        ctx.lineWidth=6;
+        ctx.strokeStyle = "black"
+
         ctx.beginPath();
-        ctx.moveTo(0, 0);   // starting point
-        ctx.lineTo(x, y);    // end point moves
+        ctx.moveTo(originX, originY);   // starting point
+        ctx.lineTo(originX+x1, originY+y1);    // end point moves
         ctx.strokeStyle = "blue";
-        ctx.lineWidth = 4;
         ctx.stroke();
-        x += 2;
-        y += 2;
 
         requestAnimationFrame(animate);
     }
