@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded",()=>{
         animate(theta1);
     })
 
-    animate((q1.value*Math.PI)/180);
+    //animate((q1.value*Math.PI)/180);
 
     q1.oninput = ()=>{
         console.log("q1:",q1.value);
