@@ -21,7 +21,10 @@ document.addEventListener("DOMContentLoaded",()=>{
     const ctx = canvas.getContext("2d");
 
     ctx.fillStyle = "blue";
-    ctx.fillRect(50, 50, 150, 100);
+    ctx.beginPath();
+    ctx.moveTo(50, 50);
+    ctx.lineTo(200, 100);
+    ctx.stroke();
 
     q1.oninput = ()=>{
         console.log("q1:",q1.value);
