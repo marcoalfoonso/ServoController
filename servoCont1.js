@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.beginPath();
-        ctx.moveTo(50, 100);   // starting point
+        ctx.moveTo(50, 50);   // starting point
         ctx.lineTo(x, y);    // end point moves
         ctx.strokeStyle = "blue";
         ctx.lineWidth = 4;
