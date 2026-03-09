@@ -44,8 +44,6 @@ document.addEventListener("DOMContentLoaded",()=>{
         ctx.lineTo(originX+x1, originY+y1);    // end point moves
         ctx.strokeStyle = "blue";
         ctx.stroke();
-
-        requestAnimationFrame(animate);
     }
 
     q1.addEventListener("input",function(){
