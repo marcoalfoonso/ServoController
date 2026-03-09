@@ -22,17 +22,19 @@ document.addEventListener("DOMContentLoaded",()=>{
     const canvas = document.getElementById("myCanvas");
     const ctx = canvas.getContext("2d");
     let x = 0;
+    let y = 0;
 
     function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.beginPath();
         ctx.moveTo(50, 100);   // starting point
-        ctx.lineTo(x, 100);    // end point moves
+        ctx.lineTo(x, y);    // end point moves
         ctx.strokeStyle = "blue";
         ctx.lineWidth = 4;
         ctx.stroke();
         x += 2;
+        y += 2;
 
         requestAnimationFrame(animate);
     }
