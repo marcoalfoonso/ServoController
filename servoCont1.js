@@ -24,10 +24,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     
     const l1 = 150;
 
-    let theta1 = (q1.value*Math.PI)/180;
-
-
-    function animate() {
+    function animate(theta1) {
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -51,7 +48,13 @@ document.addEventListener("DOMContentLoaded",()=>{
         requestAnimationFrame(animate);
     }
 
-    animate();
+    q1.addEventListener("input",function(){
+
+        let theta1 = (q1.value*Math.PI)/180;
+        animate(theta1);
+    })
+
+    animate((q1.value*Math.PI)/180);
 
     q1.oninput = ()=>{
         console.log("q1:",q1.value);
