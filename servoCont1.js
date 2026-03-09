@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
         ctx.beginPath();
         ctx.moveTo(originX, originY);   // starting point
-        ctx.lineTo(originX+x1, originY+y1);    // end point moves
+        ctx.lineTo(originX+x1, originY-y1);    // end point moves
         ctx.strokeStyle = "blue";
         ctx.stroke();
     }
@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded",()=>{
         animate(theta1);
     })
 
-    //animate((q1.value*Math.PI)/180);
+    animate((q1.value*Math.PI)/180);
 
     q1.oninput = ()=>{
         console.log("q1:",q1.value);
