@@ -16,17 +16,23 @@ client.on("error", (err) => {
 document.addEventListener("DOMContentLoaded",()=>{
 
     const q1 = document.getElementById("q1");
+
+    //Canvas
+
     const canvas = document.getElementById("myCanvas");
-
     const ctx = canvas.getContext("2d");
-
-    /*ctx.fillStyle = "blue";
-    ctx.beginPath();
-    ctx.moveTo(50, 50);
-    ctx.lineTo(200, 100);
-    ctx.stroke();*/
-
     let x = 0;
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = "purple";
+        ctx.fillRect(x, 100, 50, 50);
+
+        x += 2;
+
+        requestAnimationFrame(animate);
+    }
 
     animate();
 
@@ -38,14 +44,3 @@ document.addEventListener("DOMContentLoaded",()=>{
         }
     }
 });
-
-function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        ctx.fillStyle = "purple";
-        ctx.fillRect(x, 100, 50, 50);
-
-        x += 2;
-
-        requestAnimationFrame(animate);
-}
