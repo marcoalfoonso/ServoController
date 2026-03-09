@@ -16,6 +16,7 @@ client.on("error", (err) => {
 document.addEventListener("DOMContentLoaded",()=>{
 
     const q1 = document.getElementById("q1");
+    const q2 = document.getElementById("q2");
 
     //Canvas
 
@@ -23,8 +24,9 @@ document.addEventListener("DOMContentLoaded",()=>{
     const ctx = canvas.getContext("2d");
     
     const l1 = 150;
+    const l2 = 75;
 
-    function animate(theta1) {
+    function animate(theta1,theta2) {
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -36,23 +38,32 @@ document.addEventListener("DOMContentLoaded",()=>{
         const x1 = l1*Math.cos(theta1);
         const y1 = l1*Math.sin(theta1);
 
+        const x2 = x1 + l2*Math.cos(theta1+theta2);
+        const y2 = y1 + l2*Math.sin(theta1+theta2);
+
         ctx.lineWidth=6;
         ctx.strokeStyle = "black"
 
         ctx.beginPath();
         ctx.moveTo(originX, originY);   // starting point
         ctx.lineTo(originX+x1, originY-y1);    // end point moves
-        ctx.strokeStyle = "blue";
+        ctx.lineTo(originX+x2, originY-y2);    
         ctx.stroke();
     }
 
     q1.addEventListener("input",function(){
 
         let theta1 = (q1.value*Math.PI)/180;
-        animate(theta1);
+        animate(theta1,theta2);
     })
 
-    animate((q1.value*Math.PI)/180);
+    q2.addEventListener("input",function(){
+
+        let theta2 = (q2.value*Math.PI)/180;
+        animate(theta1,theta2);
+    })
+
+    animate((q1.value*Math.PI)/180,(q2.value*Math.PI)/180);
 
     q1.oninput = ()=>{
         console.log("q1:",q1.value);
