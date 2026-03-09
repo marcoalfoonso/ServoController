@@ -16,6 +16,9 @@ client.on("error", (err) => {
 document.addEventListener("DOMContentLoaded",()=>{
 
     const q1 = document.getElementById("q1");
+    const canvas = document.getElementById("myCanvas");
+
+    const ctx = canvas.getContext("2d");
 
     q1.oninput = ()=>{
         console.log("q1:",q1.value);
@@ -24,7 +27,4 @@ document.addEventListener("DOMContentLoaded",()=>{
             client.publish("q1",q1.value);
         }
     }
-
-
-
 });
