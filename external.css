@@ -31,3 +31,11 @@ h1{
   outline: none;
   border-radius: 3px;
 }
+
+#q2{
+  -webkit-margin-top-collapse: none;
+  width: 100%;
+  height: 7px;
+  outline: none;
+  border-radius: 3px;
+}
