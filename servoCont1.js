@@ -26,9 +26,12 @@ document.addEventListener("DOMContentLoaded",()=>{
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        ctx.fillStyle = "purple";
-        ctx.fillRect(x, 100, 50, 50);
-
+        ctx.beginPath();
+        ctx.moveTo(50, 100);   // starting point
+        ctx.lineTo(x, 100);    // end point moves
+        ctx.strokeStyle = "blue";
+        ctx.lineWidth = 4;
+        ctx.stroke();
         x += 2;
 
         requestAnimationFrame(animate);
