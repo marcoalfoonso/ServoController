@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded",()=>{
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         const originX = canvas.width/2;
-        const originY = canvas.height/5;
+        const originY = -canvas.height/5;
 
         //Cinemática directa
 
