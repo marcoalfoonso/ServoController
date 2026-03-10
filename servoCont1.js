@@ -67,19 +67,27 @@ document.addEventListener("DOMContentLoaded",()=>{
     const l1 = 150;
     const l2 = 75;
 
+    let q1Bandera = false;
+    let q2Bandera = false;
+
     client.on("message",(topic,message)=>{
         const value = Number(message.toString());
         console.log("Topic: ",topic,"Value: ",value);
 
         if(topic === "q1"){
-        q1.value = value;
+            q1.value = value;
+            q1Bandera = true;
         }
 
         if(topic === "q2"){
             q2.value = value;
+            q2Bandera = true;
         }
 
-        update(); // redibuja el robot
+        if(q1Bandera && q2Bandera){
+            update();
+        }
+
     });
 
     q1.addEventListener("input",()=>{
