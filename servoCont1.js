@@ -28,9 +28,6 @@ document.addEventListener("DOMContentLoaded",()=>{
     const q1 = document.getElementById("q1");
     const q2 = document.getElementById("q2");
 
-    q1.value = 90;
-    q2.value = 90;
-
     //Canvas
 
     const canvas = document.getElementById("myCanvas");
