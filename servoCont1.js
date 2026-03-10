@@ -56,21 +56,9 @@ document.addEventListener("DOMContentLoaded",()=>{
         animate(theta1,theta2);
     }
 
-    const q1 = document.getElementById("q1");
-    const q2 = document.getElementById("q2");
+    function pullMQTT(q1Bandera,q2Bandera){
 
-    //Canvas
-
-    const canvas = document.getElementById("myCanvas");
-    const ctx = canvas.getContext("2d");
-    
-    const l1 = 150;
-    const l2 = 75;
-
-    let q1Bandera = false;
-    let q2Bandera = false;
-
-    client.on("message",(topic,message)=>{
+        client.on("message",(topic,message)=>{
         const value = Number(message.toString());
         console.log("Topic: ",topic,"Value: ",value);
 
@@ -90,19 +78,46 @@ document.addEventListener("DOMContentLoaded",()=>{
 
     });
 
+    }
+
+    const q1 = document.getElementById("q1");
+    const q2 = document.getElementById("q2");
+
+    //Canvas
+
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+    
+    const l1 = 150;
+    const l2 = 75;
+
+    let q1Bandera = false;
+    let q2Bandera = false;
+
+    pullMQTT(q1Bandera,q2Bandera);
+
+    let lastSend = 0;
+    let lastSend1 = 0;
+
     q1.addEventListener("input",()=>{
         update();
 
-        if(client.connected){
+        const now = Date.now();
+
+        if(now - lastSend > 50 && client.connected){
             client.publish("q1",q1.value,{retain:true});
+            lastSend = now;
         }
     });
     
     q2.addEventListener("input",()=>{
         update();
 
-        if(client.connected){
+        const now1 = Date.now(); 
+
+        if(now1 - lastSend1 && client.connected){
             client.publish("q2",q2.value,{retain:true});
+            lastSend1 = now1;
         }
     });
 
