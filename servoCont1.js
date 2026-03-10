@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     let lastSend1 = 0;
 
     q1.addEventListener("input",()=>{
-        update();
+        //update();
 
         const now = Date.now();
 
@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     });
     
     q2.addEventListener("input",()=>{
-        update();
+        //update();
 
         const now1 = Date.now(); 
 
