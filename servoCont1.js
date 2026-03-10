@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     q1.addEventListener("input",function(){
 
         let theta1 = (q1.value*Math.PI)/180;
-        let thata2 = (q2.value*Math.PI)/180;
+        let theta2 = (q2.value*Math.PI)/180;
         animate(theta1,theta2);
     })
 
