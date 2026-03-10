@@ -8,11 +8,11 @@ const client = mqtt.connect("wss://e4f0d50b37b04ea79745872566f605ff.s1.eu.hivemq
 client.on("connect", () => {
   console.log("Connecting with Outh");
 
-  client.subscribe("q1", (err)=>{
+  client.subscribe(["q1","q2"], (err)=>{
     if(!err){
-        console.error("Subscripcion en q1");
+        console.log("Subscripcion en q1 y q2");
     }else{
-        console.error("Error en subscripcion q1:", err);
+        console.error("Error en subscripcion q1 y q2:", err);
     }
     });
 });
@@ -65,28 +65,28 @@ document.addEventListener("DOMContentLoaded",()=>{
         animate(theta1,theta2);
     }
 
-    q1.addEventListener("input",update);
-    q2.addEventListener("input",update);
-
-    animate((q1.value*Math.PI)/180,(q2.value*Math.PI)/180);
-
-    q1.oninput = ()=>{
+    q1.addEventListener("input",()=>{
+        update();
         console.log("q1:",q1.value);
 
         if(client.connected){
             client.publish("q1",q1.value);
         }
-    }
-
-    q2.oninput = ()=>{
+    });
+    
+    q2.addEventListener("input",()=>{
+        update();
         console.log("q2:",q2.value);
 
         if(client.connected){
             client.publish("q2",q2.value);
         }
-    }
+    });
+
+    animate((q1.value*Math.PI)/180,(q2.value*Math.PI)/180);
 
     client.on("message",(topic,message)=>{
-        console.log("Topic: ",topic,"Message: ",message.toString())
+        const value = Number(message.toString());
+        console.log("Topic: ",topic,"Value: ",value);
     })
 });
