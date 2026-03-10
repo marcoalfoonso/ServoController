@@ -67,7 +67,6 @@ document.addEventListener("DOMContentLoaded",()=>{
 
     q1.addEventListener("input",()=>{
         update();
-        console.log("q1:",q1.value);
 
         if(client.connected){
             client.publish("q1",q1.value);
@@ -76,7 +75,6 @@ document.addEventListener("DOMContentLoaded",()=>{
     
     q2.addEventListener("input",()=>{
         update();
-        console.log("q2:",q2.value);
 
         if(client.connected){
             client.publish("q2",q2.value);
@@ -88,5 +86,15 @@ document.addEventListener("DOMContentLoaded",()=>{
     client.on("message",(topic,message)=>{
         const value = Number(message.toString());
         console.log("Topic: ",topic,"Value: ",value);
-    })
+
+        if(topic === "q1"){
+        q1.value = value;
+        }
+
+        if(topic === "q2"){
+            q2.value = value;
+        }
+
+        update(); // redibuja el robot
+    });
 });
