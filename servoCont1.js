@@ -51,19 +51,14 @@ document.addEventListener("DOMContentLoaded",()=>{
         ctx.stroke();
     }
 
-    q1.addEventListener("input",function(){
-
+    function update(){
         let theta1 = (q1.value*Math.PI)/180;
         let theta2 = (q2.value*Math.PI)/180;
         animate(theta1,theta2);
-    })
+    }
 
-    q2.addEventListener("input",function(){
-
-        let theta1 = (q1.value*Math.PI)/180;
-        let theta2 = (q2.value*Math.PI)/180;
-        animate(theta1,theta2);
-    })
+    q1.addEventListener("input",update);
+    q2.addEventListener("input",update);
 
     animate((q1.value*Math.PI)/180,(q2.value*Math.PI)/180);
 
@@ -72,6 +67,14 @@ document.addEventListener("DOMContentLoaded",()=>{
 
         if(client.connected){
             client.publish("q1",q1.value);
+        }
+    }
+
+    q2.oninput = ()=>{
+        console.log("q2:",q2.value);
+
+        if(client.connected){
+            client.publish("q2",q2.value);
         }
     }
 });
