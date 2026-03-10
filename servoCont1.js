@@ -25,17 +25,6 @@ client.on("error", (err) => {
 
 document.addEventListener("DOMContentLoaded",()=>{
 
-    const q1 = document.getElementById("q1");
-    const q2 = document.getElementById("q2");
-
-    //Canvas
-
-    const canvas = document.getElementById("myCanvas");
-    const ctx = canvas.getContext("2d");
-    
-    const l1 = 150;
-    const l2 = 75;
-
     function animate(theta1,theta2) {
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -67,6 +56,32 @@ document.addEventListener("DOMContentLoaded",()=>{
         animate(theta1,theta2);
     }
 
+    const q1 = document.getElementById("q1");
+    const q2 = document.getElementById("q2");
+
+    //Canvas
+
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+    
+    const l1 = 150;
+    const l2 = 75;
+
+    client.on("message",(topic,message)=>{
+        const value = Number(message.toString());
+        console.log("Topic: ",topic,"Value: ",value);
+
+        if(topic === "q1"){
+        q1.value = value;
+        }
+
+        if(topic === "q2"){
+            q2.value = value;
+        }
+
+        //update(); // redibuja el robot
+    });
+
     q1.addEventListener("input",()=>{
         update();
 
@@ -85,18 +100,4 @@ document.addEventListener("DOMContentLoaded",()=>{
 
     animate((q1.value*Math.PI)/180,(q2.value*Math.PI)/180);
 
-    client.on("message",(topic,message)=>{
-        const value = Number(message.toString());
-        console.log("Topic: ",topic,"Value: ",value);
-
-        if(topic === "q1"){
-        q1.value = value;
-        }
-
-        if(topic === "q2"){
-            q2.value = value;
-        }
-
-        //update(); // redibuja el robot
-    });
 });
