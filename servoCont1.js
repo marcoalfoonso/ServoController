@@ -77,4 +77,6 @@ document.addEventListener("DOMContentLoaded",()=>{
             client.publish("q2",q2.value);
         }
     }
+
+    console.log(canvas.width, canvas.height);
 });
