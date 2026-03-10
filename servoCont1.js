@@ -5,6 +5,8 @@ const client = mqtt.connect("wss://e4f0d50b37b04ea79745872566f605ff.s1.eu.hivemq
     clean: true
 });
 
+console.log("Connecting to HiveMQ Claud...");
+
 client.on("connect", () => {
   console.log("Connecting with Outh");
 
