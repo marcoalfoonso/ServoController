@@ -97,6 +97,6 @@ document.addEventListener("DOMContentLoaded",()=>{
             q2.value = value;
         }
 
-        update(); // redibuja el robot
+        //update(); // redibuja el robot
     });
 });
