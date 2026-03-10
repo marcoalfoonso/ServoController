@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded",()=>{
         update();
 
         if(client.connected){
-            client.publish("q1",q1.value);
+            client.publish("q1",q1.value,{retain:true});
         }
     });
     
@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded",()=>{
         update();
 
         if(client.connected){
-            client.publish("q2",q2.value);
+            client.publish("q2",q2.value,{retain:true});
         }
     });
 
