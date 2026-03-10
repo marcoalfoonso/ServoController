@@ -5,17 +5,6 @@ const client = mqtt.connect("wss://e4f0d50b37b04ea79745872566f605ff.s1.eu.hivemq
     clean: true
 });
 
-client.on("connect", () => {
-  console.log("Connecting with Outh");
-
-  client.subscribe("q1", (err)=>{
-    if(!err){
-        console.error("Subscripcion en q1");
-    }else{
-        console.error("Error en subscripcion q1:", err);
-    }
-    });
-});
 
 client.on("error", (err) => {
   console.error("Error:", err);
@@ -39,7 +28,7 @@ document.addEventListener("DOMContentLoaded",()=>{
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         const originX = canvas.width/2;
-        const originY = -canvas.height/5;
+        const originY = canvas.height*0.75;
 
         //Cinemática directa
 
@@ -87,6 +76,6 @@ document.addEventListener("DOMContentLoaded",()=>{
     }
 
     client.on("message",(topic,message)=>{
-        console.log("Topic: ",topic,"Message: ",message.toString())
+        console.log("Topic: ",topic,"Message: ",message.toString());
     })
 });
